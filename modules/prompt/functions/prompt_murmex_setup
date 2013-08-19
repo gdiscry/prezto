@@ -21,6 +21,10 @@
 
 function prompt_murmex_precmd {
   vcs_info
+
+  if (( $+functions[python-info] )); then
+    python-info
+  fi
 }
 
 function prompt_murmex_setup {
@@ -42,6 +46,7 @@ function prompt_murmex_setup {
   local success_color='%F{green}'
   local failure_color='%F{red}'
   local vcs_info_color='%F{cyan}'
+  local virtualenv_color='%F{yellow}'
 
   # Set vcs_info parameters.
   zstyle ':vcs_info:*' enable bzr git hg svn
@@ -52,9 +57,12 @@ function prompt_murmex_setup {
   zstyle ':vcs_info:*' formats "%S" " %r/%s/%b %u%c"
   zstyle ':vcs_info:*' nvcsformats "%~" ""
 
+  # Set python_info parameters.
+  zstyle ':prezto:module:python:info:virtualenv' format ' [%v]'
+
   # Define prompts.
   PROMPT="%(?.${success_color}.${failure_color})${SSH_TTY:+[%n@%m]}%B%${max_path_chars}<...<"'${vcs_info_msg_0_%%.}'"%<<%(!.${root_char}.${user_char})%b%f "
-  RPROMPT="${vcs_info_color}"'${vcs_info_msg_1_}'"%f"
+  RPROMPT="${virtualenv_color}"'${python_info[virtualenv]}'"%f${vcs_info_color}"'${vcs_info_msg_1_}'"%f"
 }
 
 prompt_murmex_setup "$@"
