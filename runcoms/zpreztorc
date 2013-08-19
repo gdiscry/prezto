@@ -34,6 +34,7 @@ zstyle ':prezto:load' pmodule \
   'archive' \
   'git' \
   'python' \
+  'tmux' \
   'completion' \
   'syntax-highlighting' \
   'history-substring-search' \
@@ -144,5 +145,5 @@ zstyle ':prezto:module:terminal' auto-title 'yes'
 # zstyle ':prezto:module:tmux:auto-start' local 'yes'
 
 # Auto start a session when Zsh is launched in a SSH connection.
-# zstyle ':prezto:module:tmux:auto-start' remote 'yes'
+zstyle ':prezto:module:tmux:auto-start' remote 'yes'
 
