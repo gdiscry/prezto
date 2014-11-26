@@ -60,15 +60,6 @@ fi
 unset local256
 
 #
-# Grep
-#
-
-if zstyle -t ':prezto:environment:grep' color; then
-  export GREP_COLOR='37;45'
-  export GREP_OPTIONS='--color=auto'
-fi
-
-#
 # Termcap
 #
 
